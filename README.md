@@ -1,8 +1,8 @@
 # news-image-20261122
 
-[![make.fun bounty](https://img.shields.io/badge/make.fun-bounty-blue)](https://make.fun/bounty/news-image-20261122)
-[![make.fun rank](https://img.shields.io/badge/make.fun-rank%20top%2050-brightgreen)](https://make.fun/bounty/news-image-20261122)
-[![make.fun reward](https://img.shields.io/badge/make.fun-reward%20%24100-blue)](https://make.fun/bounty/news-image-20261122)
+[![make.fun · news-image-20261122](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
+[![rank](https://make.fun/badge/news-image-20261122/xcroo/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
+[![reward](https://make.fun/badge/news-image-20261122/xcroo/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 
 A one-page newspaper front page for Sunday, November 22, 2026: "The Global Herald".
 Five lead stories anchor the page: the Pentagon moving to restrict U.S.-Canada defense
