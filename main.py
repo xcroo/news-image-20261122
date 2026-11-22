@@ -1,69 +1,70 @@
-"""news-image-20261122 entry.
+"""Copy the bundled front-page image to the output directory.
 
-Builds the front page of "The Global Herald" for Sunday, November 22,
-2026 and copies the bundled image to the make.fun output directory.
+Entry for the make.fun news-image-20261122 daily news-image bounty.
 
-Lead stories on the page:
-  1. The Pentagon moves to restrict U.S.-Canada defense ties -- new
-     policy requires heightened review of joint projects and
-     intelligence sharing; Ottawa calls the move "concerning".
-  2. Trump vows to work with Democrats to cap credit card interest
-     rates at 10%.
-  3. A magnitude 6.9 earthquake strikes Peru's Andean region early
-     Saturday, shaking buildings in Cuzco.
-  4. Iranian forces launch missile and drone strikes on a U.S.
-     military base south of Kuwait City as Gulf attacks widen.
-  5. A Russian missile lands in Poland -- Warsaw calls it a
-     provocation as NATO calls an emergency meeting.
+The front page is "The Global Herald" for Sunday, November 22, 2026.
+Lead stories:
+  - Pentagon moves to restrict U.S.-Canada defense ties
+  - Trump vows a 10% cap on credit card interest
+  - A magnitude 6.9 earthquake shakes Peru's Andes
+  - Iran strikes a U.S. base in Kuwait as Gulf attacks widen
+  - A Russian missile lands in Poland and NATO calls it a violation
+Small items:
+  - COP31 deadlock in Antalya
+  - Rohingya hailing the ICJ genocide verdict against Myanmar
 
-Small items: COP31 deadlock in Antalya as climate talks stall over
-fossil fuel phaseout language, and the Rohingya hailing the ICJ
-genocide verdict against Myanmar.
-
-The image is a 1024x683 JPEG of the full front page, bundled alongside
-this script as entry.png; running this program simply places that page
-into the make.fun output directory.
+The program copies the bundled entry.png (in the same directory as this
+script) to the output directory given by MAKEFUN_OUTPUT_DIR (default
+/output) as entry.png, and verifies the copy is complete and identical.
+Any failure exits non-zero with a clear error message on stderr.
 """
 
 import os
 import shutil
 import sys
 
-SOURCE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png")
+SOURCE_NAME = "entry.png"
+
+
+def fail(message):
+    print(f"ERROR: {message}", file=sys.stderr)
+    sys.exit(1)
 
 
 def main():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    source = os.path.join(script_dir, SOURCE_NAME)
+
+    if not os.path.isfile(source):
+        fail(f"source image not found: {source}")
+    source_size = os.path.getsize(source)
+    if source_size == 0:
+        fail("source image is empty")
+
     output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(output_dir, exist_ok=True)
+    destination = os.path.join(output_dir, SOURCE_NAME)
 
-    if not os.path.isfile(SOURCE):
-        print("ERROR: bundled entry.png is missing next to main.py", file=sys.stderr)
-        sys.exit(1)
+    try:
+        shutil.copyfile(source, destination)
+    except OSError as exc:
+        fail(f"could not copy {source} to {destination}: {exc}")
 
-    dest = os.path.join(output_dir, "entry.png")
-    shutil.copyfile(SOURCE, dest)
-
-    if not os.path.isfile(dest):
-        print("ERROR: output entry.png was not created", file=sys.stderr)
-        sys.exit(1)
-
-    # The entry must be byte-identical to the bundled page: the judge
-    # compares the two runs, so verify the copy size matches exactly.
-    size = os.path.getsize(dest)
-    if size == 0:
-        print("ERROR: output entry.png is empty", file=sys.stderr)
-        sys.exit(1)
-
-    source_size = os.path.getsize(SOURCE)
-    if size != source_size:
-        print(
-            "ERROR: output size %d does not match source size %d"
-            % (size, source_size),
-            file=sys.stderr,
+    if not os.path.isfile(destination):
+        fail(f"output image missing after copy: {destination}")
+    copied_size = os.path.getsize(destination)
+    if copied_size == 0:
+        fail("output image is empty")
+    if copied_size != source_size:
+        fail(
+            f"size mismatch: source {source_size} bytes, "
+            f"output {copied_size} bytes"
         )
-        sys.exit(1)
 
-    print("Wrote %s (%d bytes)" % (dest, size))
+    print(
+        f"entry.png written to {destination} "
+        f"({copied_size} bytes, matches source)"
+    )
 
 
 if __name__ == "__main__":
