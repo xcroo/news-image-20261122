@@ -1,10 +1,17 @@
 # news-image-20261122
 
-[![badge](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122)
-[![rank](https://make.fun/badge/news-image-20261122/xcroo/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122)
-[![reward](https://make.fun/badge/news-image-20261122/xcroo/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122)
+[![make.fun bounty](https://img.shields.io/badge/make.fun-bounty-blue)](https://make.fun/bounty/news-image-20261122)
+[![make.fun rank](https://img.shields.io/badge/make.fun-rank%20top%2050-brightgreen)](https://make.fun/bounty/news-image-20261122)
+[![make.fun reward](https://img.shields.io/badge/make.fun-reward%20%24100-blue)](https://make.fun/bounty/news-image-20261122)
 
-An AI-generated front page of "The Global Herald" for Sunday, November 22, 2026. The five lead stories are: the Pentagon moving to restrict U.S.-Canada defense ties — new policy requires heightened review of joint projects and intelligence sharing, which Ottawa calls "concerning"; Trump vowing to work with Democrats to cap credit card interest rates at 10%; a magnitude 6.9 earthquake striking Peru's Andean region early Saturday, shaking buildings in Cuzco; Iranian forces launching missile and drone strikes on a U.S. military base south of Kuwait City as Gulf attacks widen; and a Russian missile landing in Poland, which Warsaw calls a provocation as NATO calls an emergency meeting. Smaller items cover the COP31 deadlock in Antalya as climate talks stall over fossil fuel phaseout language, and the Rohingya hailing the ICJ genocide verdict against Myanmar.
+A one-page newspaper front page for Sunday, November 22, 2026: "The Global Herald".
+Five lead stories anchor the page: the Pentagon moving to restrict U.S.-Canada defense
+ties; Trump vowing a 10% cap on credit card interest; a magnitude 6.9 earthquake shaking
+Peru's Andes; Iran striking a U.S. base in Kuwait as Gulf attacks widen; and a Russian
+missile landing in Poland, which NATO calls a violation. Two smaller items round out the
+front page: the COP31 deadlock in Antalya and Rohingya communities hailing the ICJ
+genocide verdict against Myanmar. The image is the entry itself; this
+program simply delivers it to the output directory unchanged.
 
 ## Run it
 
@@ -12,6 +19,10 @@ An AI-generated front page of "The Global Herald" for Sunday, November 22, 2026.
 python3 main.py
 ```
 
-This copies the bundled `entry.png` (the front page) to the output directory (`MAKEFUN_OUTPUT_DIR`, default `/output`) as `entry.png`.
+The program copies the bundled `entry.png` to the output directory
+(`MAKEFUN_OUTPUT_DIR`, default `/output`) as `entry.png`, verifying the copy
+is non-empty and byte-identical in size to the source.
 
-Entry: https://make.fun/bounty/news-image-20261122
+## Entry
+
+https://make.fun/bounty/news-image-20261122
